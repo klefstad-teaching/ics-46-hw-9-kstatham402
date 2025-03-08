@@ -16,11 +16,20 @@ bool edit_distance_within(const std::string& str1, const std::string& str2, int 
     int len1 = str1.length(), len2 = str2.length();
     int minLen = std::min(len1, len2);
     if (abs(len1 - len2) > d) return false;
-    int difference = 0;
-    for (int i = 0; i < minLen; i++) {
-        if (str1[i] != str2[i]) {
+    int difference = 0, i = 0, j = 0;
+    while (i < len1 && j < len2) {
+        if (str1[i] != str2[j]) {
             difference++;
             if (difference > d) return false;
+            if (len1 > len2) {++i;}
+            else if (len2 > len1) {++j;}
+            else {
+                ++i;
+                ++j;
+            }
+        } else {
+            ++i;
+            ++j;
         }
     }
     difference += abs(len1 - len2);
