@@ -36,9 +36,7 @@ bool edit_distance_within(const std::string& str1, const std::string& str2, int 
     return difference <= d;
 
 }
-// bool is_adjacent(const string& word1, const string& word2) {
-//     return edit_distance_within(word1, word2, 1);
-// }
+
 bool is_adjacent(const string& word1, const string& word2) {
     int len1 = word1.length(), len2 = word2.length(), i = 0, j = 0;
     if (abs(len1 - len2) > 1) return false;
@@ -71,37 +69,32 @@ bool is_adjacent(const string& word1, const string& word2) {
 
 vector<string> generate_word_ladder(const string& begin_word,
     const string& end_word, const set<string>& word_list) {
-    set<string> unvisited_words = word_list;
-    queue<vector<string>> paths;
-    paths.push({begin_word});
-
+    queue<vector<string>> ladder_queue;
+    ladder_queue.push({begin_word});
     set<string> visited;
     visited.insert(begin_word);
 
-    while (!paths.empty()) {
-        int level_size = paths.size();
-        set<string> remove_words;
-        for (int i = 0; i < level_size; i++) {
-            vector<string> path = paths.front();
-            paths.pop();
-            string last_word = path.back();
-            if (last_word == end_word) return path;
-            for (const string& word : unvisited_words) {
-                if (is_adjacent(last_word, word) && visited.find(word) == visited.end()) {
-                    vector<string> new_path = path;
-                    new_path.push_back(word);
-                    paths.push(new_path);
+    while (!ladder_queue.empty()) {
+        vector<string> ladder = ladder_queue.front();
+        ladder_queue.pop();
+        string last_word = ladder.back();
+        for (auto word : word_list) {
+            if (is_adjacent(last_word, word)) {
+                if (visited.find(word) == visited.end()) {
                     visited.insert(word);
-                    remove_words.insert(word);
+                    vector<string> new_ladder = ladder;
+                    new_ladder.push_back(word);
+                    if (word == end_word) {
+                        return new_ladder;
+                    }
+                    ladder_queue.push(new_ladder);
                 }
             }
-        }
-        for (const string& word : remove_words) {
-            unvisited_words.erase(word);
         }
     }
     return {};
 }
+
 void load_words(set<string> & word_list, const string& file_name) {
     ifstream file(file_name);
     if (!file) {
