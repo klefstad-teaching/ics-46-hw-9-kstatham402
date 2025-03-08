@@ -20,7 +20,11 @@ void testLadder(const string &begin_word, const string &end_word, set<string> & 
 int main() {
     set<string> word_list;
     load_words(word_list, "src/words.txt");
-    // testLadder("car", "cheat", word_list);
+    testLadder("car", "cheat", word_list);
     testLadder("code", "data", word_list);
+    testLadder("cat", "dog", word_list);
+    testLadder("marty", "curls", word_list);
+    testLadder("work", "play", word_list);
+    testLadder("sleep", "awake", word_list);
     return 0;
 }
