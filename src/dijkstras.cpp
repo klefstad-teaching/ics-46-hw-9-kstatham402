@@ -72,7 +72,7 @@ void print_path(const vector<int>& v, int total) {
     // }
     // cout << "Total cost is " << total << endl;
     if (v.size() == 0) {
-        cout << "Total cost is " << total << endl;
+        cout << "\nTotal cost is " << total << endl;
         return;
     }
     for (int edge : v) {
