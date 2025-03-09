@@ -17,14 +17,26 @@ void testLadder(const string &begin_word, const string &end_word, set<string> & 
 
 }
 
+void test_edit_distance_within() {
+    std::cout << "Test 1: " << (edit_distance_within("apple", "bapple", 1) ? "Passed" : "Failed") << std::endl;
+    std::cout << "Test 2: " << (edit_distance_within("apple", "appl", 1) ? "Passed" : "Failed") << std::endl;
+    std::cout << "Test 3: " << (edit_distance_within("apple", "applz", 1) ? "Passed" : "Failed") << std::endl;
+    std::cout << "Test 4: " << (edit_distance_within("apple", "apricot", 2) ? "Passed" : "Failed") << std::endl;
+    std::cout << "Test 5: " << (edit_distance_within("apple", "apple", 0) ? "Passed" : "Failed") << std::endl;
+    std::cout << "Test 6: " << (edit_distance_within("apple", "applz", 2) ? "Passed" : "Failed") << std::endl;
+    std::cout << "Test 7: " << (edit_distance_within("apple", "banana", 3) ? "Passed" : "Failed") << std::endl;
+}
+
+
 int main() {
-    set<string> word_list;
-    load_words(word_list, "src/words.txt");
-    testLadder("car", "cheat", word_list);
-    testLadder("code", "data", word_list);
-    testLadder("cat", "dog", word_list);
-    testLadder("marty", "curls", word_list);
-    testLadder("work", "play", word_list);
-    testLadder("sleep", "awake", word_list);
+    test_edit_distance_within();
+    // set<string> word_list;
+    // load_words(word_list, "src/words.txt");
+    // testLadder("car", "cheat", word_list);
+    // testLadder("code", "data", word_list);
+    // testLadder("cat", "dog", word_list);
+    // testLadder("marty", "curls", word_list);
+    // testLadder("work", "play", word_list);
+    // testLadder("sleep", "awake", word_list);
     return 0;
 }
