@@ -12,7 +12,7 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
     vector<int> distance(n, INF);
     vector<bool> visited(n, false);
     previous.resize(n,-1);
-    cout << "Starting Algo from source: " << source << endl;
+    cout << "\n\nStarting Algo from source: " << source << endl;
     priority_queue<Edge, vector<Edge>, greater<Edge>> pq;
     pq.push(Edge(source, 0));
     distance[source] = 0;
@@ -51,13 +51,21 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
 vector<int> extract_shortest_path(const vector<int>& distances, const vector<int>& previous,
     int destination) {
     vector<int> shortest_path;
+    cout << "\n\nExtracting shortest path for destination: " << destination << endl;
     if (distances[destination] == INF) {
+        cout << "No path found to destination " << destination << endl;
         return shortest_path;
     }
     for (int i = destination; i != -1; i = previous[i]) {
         shortest_path.push_back(i);
+        cout << "Path trace: " << i << " <- ";
     }
     reverse(shortest_path.begin(), shortest_path.end());
+    cout << "Shortest path extracted: ";
+    for (int node : shortest_path) {
+        cout << node << " ";
+    }
+    cout << endl;
     return shortest_path;
 }
 void print_path(const vector<int>& v, int total) {
