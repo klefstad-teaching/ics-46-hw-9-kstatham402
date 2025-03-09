@@ -56,10 +56,10 @@ vector<int> extract_shortest_path(const vector<int>& distances, const vector<int
         // cout << "No path found from source: " << destination << endl;
         return shortest_path;
     }
-    // for (int i = destination; i != -1; i = previous[i]) {
-    //     shortest_path.push_back(i);
-    //     cout << "Pushing back node " << i << endl;
-    // }
+    for (int i = destination; i != -1; i = previous[i]) {
+        shortest_path.push_back(i);
+        // cout << "Pushing back node " << i << endl;
+    }
     reverse(shortest_path.begin(), shortest_path.end());
     return shortest_path;
 }
