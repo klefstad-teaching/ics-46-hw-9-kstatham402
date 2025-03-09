@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "dijkstras.h"  // Include your header file
+#include "dijkstras.h"
 
 using namespace std;
 // g++ -std=c++17 -o dijkstras_main src/dijkstras_main.cpp src/dijkstras.cpp
@@ -29,7 +29,7 @@ void test_dijkstra() {
     }
     cout << endl;
 }
-int test_dijkstra_small() {
+void test_dijkstra_small() {
     Graph G;
     string filename = "src/small.txt";
 
@@ -37,32 +37,17 @@ int test_dijkstra_small() {
         file_to_graph(filename, G);
     } catch (const exception& e) {
         cerr << "Error: " << e.what() << endl;
-        return 1;
+        return;
     }
 
-    int source = 0; // Set the source vertex
+    int source = 0;
     vector<int> previous;
     vector<int> distances = dijkstra_shortest_path(G, source, previous);
 
-    cout << "Shortest distances from node " << source << ":\n";
-    for (size_t i = 0; i < distances.size(); i++) {
-        cout << "Total Cost is " << (distances[i] == INF ? "INF" : to_string(distances[i])) << endl;
+    for (int i = 0; i < distances.size(); i++) {
+        vector<int> shortest_path = extract_shortest_path(distances, previous, i);
+        print_path(shortest_path, distances[i]);
     }
-
-    int destination = 2; // Example destination
-    vector<int> shortest_path = extract_shortest_path(distances, previous, destination);
-
-    cout << "Shortest path from " << source << " to " << destination << ": ";
-    if (shortest_path.empty()) {
-        cout << "No path exists.\n";
-    } else {
-        for (int node : shortest_path) {
-            cout << node << " ";
-        }
-        cout << endl;
-    }
-
-    return 0;
 }
 
 int main() {
