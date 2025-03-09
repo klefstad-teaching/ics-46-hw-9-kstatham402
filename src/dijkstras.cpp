@@ -53,5 +53,5 @@ void print_path(const vector<int>& v, int total) {
         cout << edge << " ";
     }
     cout << endl;
-    cout << "Total Cost is " << (total == INF ? "INF" : to_string(total)) << endl;
+    cout << "Total Cost is " << total << endl;
 }
