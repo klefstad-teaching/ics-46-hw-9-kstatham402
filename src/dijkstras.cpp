@@ -53,7 +53,6 @@ vector<int> extract_shortest_path(const vector<int>& distances, const vector<int
     vector<int> shortest_path;
     // cout << "\n\nShortest path from source: " << destination << endl;
     if (distances[destination] == INF) {
-        // cout << "No path found from source: " << destination << endl;
         return shortest_path;
     }
     for (int i = destination; i != -1; i = previous[i]) {
@@ -68,16 +67,6 @@ void print_path(const vector<int>& v, int total) {
         for (int edge : v) {
             cout << edge << " ";
         }
-        cout << endl;
     }
-    cout << "Total cost is " << total << endl;
-    // if (v.size() == 0) {
-    //     cout << "\nTotal cost is " << total << endl;
-    //     return;
-    // }
-    // for (int edge : v) {
-    //     cout << edge << " ";
-    // }
-    // cout << endl;
-    // cout << "Total cost is " << total << endl;
+    cout << "\nTotal cost is " << total << endl;
 }

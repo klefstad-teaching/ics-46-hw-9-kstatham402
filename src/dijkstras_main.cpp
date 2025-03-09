@@ -31,7 +31,7 @@ void test_dijkstra() {
 }
 void test_dijkstra_small() {
     Graph G;
-    string filename = "src/large.txt";
+    string filename = "src/test.txt";
 
     try {
         file_to_graph(filename, G);
@@ -40,7 +40,7 @@ void test_dijkstra_small() {
         return;
     }
 
-    int source = 0;
+    int source = 1;
     vector<int> previous;
     vector<int> distances = dijkstra_shortest_path(G, source, previous);
 
