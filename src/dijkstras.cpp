@@ -12,7 +12,7 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
     vector<int> distance(n, INF);
     vector<bool> visited(n, false);
     previous.resize(n,-1);
-    cout << "Starting Algo from source: " << source << endl;
+    // cout << "Starting Algo from source: " << source << endl;
     priority_queue<Edge, vector<Edge>, greater<Edge>> pq;
     pq.push(Edge(source, 0));
     distance[source] = 0;
@@ -41,11 +41,11 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
             }
         }
     }
-    cout << "Final distances: ";
-    for (int i = 0; i < n; ++i) {
-        cout << distance[i] << " ";
-    }
-    cout << endl;
+    // cout << "Final distances: ";
+    // for (int i = 0; i < n; ++i) {
+    //     cout << distance[i] << " ";
+    // }
+    // cout << endl;
     return distance;
 }
 vector<int> extract_shortest_path(const vector<int>& distances, const vector<int>& previous,
@@ -64,16 +64,16 @@ vector<int> extract_shortest_path(const vector<int>& distances, const vector<int
     return shortest_path;
 }
 void print_path(const vector<int>& v, int total) {
-    if (!v.empty()) {
-        for (int edge : v) {
-            cout << edge << " ";
-        }
-        cout << endl;
-    }
-    cout << "Total cost is " << total << endl;
-    // for (int edge : v) {
-    //     cout << edge << " ";
+    // if (!v.empty()) {
+    //     for (int edge : v) {
+    //         cout << edge << " ";
+    //     }
+    //     cout << endl;
     // }
-    // cout << endl;
     // cout << "Total cost is " << total << endl;
+    for (int edge : v) {
+        cout << edge << " ";
+    }
+    cout << endl;
+    cout << "Total cost is " << total << endl;
 }
