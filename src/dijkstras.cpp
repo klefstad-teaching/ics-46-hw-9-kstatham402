@@ -64,20 +64,20 @@ vector<int> extract_shortest_path(const vector<int>& distances, const vector<int
     return shortest_path;
 }
 void print_path(const vector<int>& v, int total) {
-    // if (!v.empty()) {
-    //     for (int edge : v) {
-    //         cout << edge << " ";
-    //     }
-    //     cout << endl;
-    // }
-    // cout << "Total cost is " << total << endl;
-    if (v.size() == 0) {
-        cout << "\nTotal cost is " << total << endl;
-        return;
+    if (!v.empty()) {
+        for (int edge : v) {
+            cout << edge << " ";
+        }
+        cout << endl;
     }
-    for (int edge : v) {
-        cout << edge << " ";
-    }
-    cout << endl;
     cout << "Total cost is " << total << endl;
+    // if (v.size() == 0) {
+    //     cout << "\nTotal cost is " << total << endl;
+    //     return;
+    // }
+    // for (int edge : v) {
+    //     cout << edge << " ";
+    // }
+    // cout << endl;
+    // cout << "Total cost is " << total << endl;
 }
