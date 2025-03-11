@@ -31,7 +31,7 @@ void test_dijkstra() {
 }
 void test_dijkstra_small() {
     Graph G;
-    string filename = "src/test.txt";
+    string filename = "src/largest.txt";
 
     try {
         file_to_graph(filename, G);
